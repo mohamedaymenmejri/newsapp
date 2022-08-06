@@ -17,8 +17,8 @@ The News app for top headlines in France using MVVM architecture, Retrofit, Dagg
 5. **feature**: ui layer handling with ViewModel classes
 <br><br>
 <p align="center">
-        <img src="img/news1.png" width="250">
-        <img src="img/news2.png" width="250">
+        <img src="img/news1.PNG" width="250">
+        <img src="img/news2.PNG" width="250">
 </p>
 <br>
 
