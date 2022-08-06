@@ -20,12 +20,14 @@ fun loadThumbnailImage(imageView: ImageView, url: String?) {
 }
 
 @BindingAdapter("app:sourceName", "app:dateTime")
-fun getSourceAndTime(textView: TextView, sourceName: String, dateTime: Timestamp) {
-    textView.text = sourceName + " • " + dateTime.time.getElapsedTime()
+fun getSourceAndTime(textView: TextView, sourceName: String?, dateTime: Timestamp?) {
+    textView.text = sourceName + " • " + dateTime?.time?.getElapsedTime()
 }
 
 @BindingAdapter("app:dateToFormat")
-fun formatDateForDetails(textView: TextView, date: Timestamp) {
+fun formatDateForDetails(textView: TextView, date: Timestamp?) {
     val format = SimpleDateFormat("dd MMM yyyy, hh:mm aaa", Locale.getDefault())
-    textView.text = format.format(Date(date.time))
+    date?.time?.let {
+        textView.text = format.format(Date(it))
+    }
 }
