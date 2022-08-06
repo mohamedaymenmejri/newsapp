@@ -26,7 +26,7 @@ The News app for top headlines in France using MVVM architecture, Retrofit, Dagg
  All library used are in central gradle file named [dependencies](dependencies.gradle). Please check it for more info.
 
 ## Detekt report:
- To check generated report by static code analyzer [detekt](https://detekt.dev/), please check this [report](reports/detekt/detekt-report.htm)
+ To check generated report by static code analyzer [detekt](https://detekt.dev/), please check this [report](/reports/detekt/detekt-report.html)
 
 ## What's next:
 1. **Test**: add test for ui with real remote data.
