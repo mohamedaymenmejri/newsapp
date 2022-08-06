@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.aymen.instantnews.data.entities.Article" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
+        tools:context=".ui.MainActivity">
+        android:paddingStart="12dp"
+        android:paddingTop="26dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="26dp"
+
+        <ImageView
+            android:id="@+id/iv_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ddd"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{news.urlToImage}" />
+
+        <ImageView
+            android:id="@+id/gradiantBlackBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/app_name"
+            android:rotation="180"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradiant_black_top_transparent_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.75"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvNewsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:minLines="3"
+            android:text="@{news.title}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@android:color/white"
+            android:textSize="26sp"
+            android:fontFamily="@font/baloo_bold"
+            app:layout_constraintEnd_toEndOf="@id/iv_news_image"
+            app:layout_constraintStart_toStartOf="@id/iv_news_image"
+            app:layout_constraintBottom_toTopOf="@id/tv_news_source"
+            tools:text="This is a test for title" />
+
+        <TextView
+            android:id="@+id/tv_news_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="This is a source"
+            android:textColor="#6d6d6d"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tvNewsTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:sourceName="@{news.source.name}"
+            app:dateTime="@{news.publishedAt}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">instantNews</string>
+    <string name="navigate_to_article_link" tools:ignore="ExtraTranslation">Voir l\'article complet</string>
+    <string name="no_internet" tools:ignore="ExtraTranslation">Ooops !! pas de connexion, Relancer ?</string>
+    <string name="empty_news_list" tools:ignore="ExtraTranslation">Pas de news à afficher !!</string>
+</resources>

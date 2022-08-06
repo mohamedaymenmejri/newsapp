@@ -1,0 +1,75 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'https://mvnrepository.com/artifact/com.android.tools.lint/lint-gradle-api'
+        }
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
+    }
+}
+
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.4.0"
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { task ->
+    task.sourceCompatibility = JavaVersion.VERSION_1_8
+    task.targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+detekt {
+    toolVersion = "1.4.0"
+    config = files("./config/detekt/detekt-config-ide.yml")
+    input = files("app/src/main/java")
+    failFast = false
+    ignoreFailures = true
+    disableDefaultRuleSets = false
+    detekt {
+        reports {
+            html {
+                enabled = true
+                destination = file("reports/detekt/detekt-report.html")
+            }
+        }
+    }
+}
+
+apply from: 'dependencies.gradle'
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    ANDROID_BUILD_APP_VERSION_CODE = getVersionCode()
+    ANDROID_BUILD_APP_VERSION_NAME = getVersionName()
+}
+
+static def getVersionCode() {
+    return 1
+}
+
+static def getVersionName() {
+    return "0.0." + getVersionCode()
+}

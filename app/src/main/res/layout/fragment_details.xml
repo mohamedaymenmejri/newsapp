@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".feature.news.details.DetailsFragment">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.aymen.instantnews.data.entities.Article" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        tools:background="@android:color/holo_blue_dark">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_news_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#ddd"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test"
+                app:layout_constraintDimensionRatio="1:0.75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:url="@{news.urlToImage}" />
+
+            <ImageView
+                android:id="@+id/gradiantBlackTop"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gradiant_black_top_transparent_bottom"
+                app:layout_constraintDimensionRatio="1:0.75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:dateToFormat="@{news.publishedAt}"
+                app:layout_constraintEnd_toEndOf="@id/tv_news_source"
+                app:layout_constraintStart_toStartOf="@id/tv_news_source"
+                app:layout_constraintTop_toBottomOf="@+id/tv_news_source"
+                tools:text="@tools:sample/date/ddmmyy" />
+
+            <TextView
+                android:id="@+id/tv_news_source"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:maxLines="1"
+                android:paddingBottom="8dp"
+                android:text="@{news.source.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/backNav"
+                app:layout_constraintTop_toTopOf="@id/backNav"
+                tools:text="The Washington Post" />
+
+            <TextView
+                android:id="@+id/backNav"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="24dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="&lt;"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNewsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/baloo_bold"
+                android:gravity="center_vertical"
+                android:text="@{news.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_news_image"
+                app:layout_constraintStart_toStartOf="@id/iv_news_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_news_image"
+                tools:text="This is a test for titleThis is a test for titleThis is a test for title" />
+
+            <TextView
+                android:id="@+id/tvNewsDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/baloo_bold"
+                android:gravity="start"
+                android:lineSpacingExtra="0.2dp"
+                android:lineSpacingMultiplier="0.75"
+                android:text="@{news.description}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/readMore"
+                app:layout_constraintEnd_toEndOf="@id/tvNewsTitle"
+                app:layout_constraintStart_toStartOf="@id/tvNewsTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle"
+                tools:text="This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title This is a test for titleThis is a test for titleThis is a test for title " />
+
+            <ImageView
+                android:id="@+id/gradiantWhiteBottom"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/app_name"
+                android:rotation="180"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gradiant_white_top_transparent_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/readMore"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="@string/navigate_to_article_link"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

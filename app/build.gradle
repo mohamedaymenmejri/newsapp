@@ -1,0 +1,229 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    compileSdk rootProject.ext.androidCompileSdkVersion
+
+    signingConfigs {
+        signconfig {
+            keyAlias 'instantKey'
+            keyPassword 'instantKey@'
+            storeFile file('../instantNewsKey.jks')
+            storePassword 'instantKey@'
+        }
+    }
+
+    defaultConfig {
+        applicationId rootProject.ext.appId
+        minSdk rootProject.ext.androidMinSdkVersion
+        targetSdk rootProject.ext.androidTargetSdkVersion
+        versionCode ANDROID_BUILD_APP_VERSION_CODE
+        versionName ANDROID_BUILD_APP_VERSION_NAME
+
+        multiDexEnabled = true
+
+        testInstrumentationRunner "com.aymen.instantnews.runner.UiRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.signconfig
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //FIXME (Change it with development's base url)
+            buildConfigField 'String', 'BASEURL', '"https://newsapi.org/v2/"'
+            buildConfigField 'String', 'API_KEY', '"d821b3e51a66459991435b7fafc926a4"'
+        }
+        release {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.signconfig
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //FIXME (Change it with production's base url)
+            buildConfigField 'String', 'BASEURL', '"https://newsapi.org/v2/"'
+            buildConfigField 'String', 'API_KEY', '"d821b3e51a66459991435b7fafc926a4"'
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        abortOnError false
+        htmlOutput file("../reports/lint/lint-report.html")
+
+        enable 'WrongThreadInterprocedural',
+                'UnsupportedChromeOsHardware',
+                'UnpackedNativeCode',
+                'UnknownNullness',
+                'TypographyQuotes',
+                'StopShip',
+                'RequiredSize',
+                'Registered',
+                'PermissionImpliesUnsupportedChromeOsHardware',
+                'NoHardKeywords',
+                'NewerVersionAvailable',
+                'NegativeMargin',
+                'MinSdkTooLow',
+                'MangledCRLF',
+                'LogConditional',
+                'LambdaLast',
+                'KotlinPropertyAccess',
+                'IconExpectedSize',
+                'FieldGetter',
+                'EasterEgg',
+                'BackButton',
+                'AppLinksAutoVerifyWarning',
+                'AppLinksAutoVerifyError',
+                'CanvasSize',
+                'IntentReset',
+                'InvalidNavigation',
+                'InvalidWakeLockTag',
+                'MissingDefaultResource',
+                'RequiresFeature',
+                'Slices',
+                'TranslucentOrientation',
+                'ValidActionsXml',
+                'Untranslatable',
+                'DeletedProvider',
+                'DeprecatedProvider',
+                'ProxyPassword',
+                'RiskyLibrary',
+                'ExpiredTargetSdkVersion',
+                'ExpiringTargetSdkVersion',
+                'OutdatedLibrary',
+                'ConstantLocale'
+
+        disable 'TrustAllX509TrustManager',
+                'ObsoleteLintCustomCheck',
+                'Overdraw',
+                'MissingRegistered', // will be enabled when we use multiple localizations string resources
+                'SelectableText',
+                'Autofill',
+                'Performance',
+                'SyntheticAccessor',
+                'UnusedIds',
+                'ConvertToWebp',
+                'PluralsCandidate',
+                'InvalidPackage'
+
+        warningsAsErrors true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/java'
+        test.java.srcDirs += 'src/test/java'
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    }
+}
+
+dependencies {
+
+//    Multidex
+    implementation mobileUiDependencies.multidex
+
+//    ViewModel
+    implementation mobileUiDependencies.archViewModelLifeCycleKtx
+
+//    UI
+    implementation mobileUiDependencies.appCompat
+    implementation mobileUiDependencies.materialDesign
+    implementation mobileUiDependencies.recyclerView
+    implementation mobileUiDependencies.constraintLayout
+    implementation mobileUiDependencies.timber
+    implementation mobileUiDependencies.glide
+    kapt mobileUiDependencies.glideCompiler
+
+//    Kotlin
+    implementation mobileUiDependencies.kotlin
+    implementation mobileUiDependencies.kotlinKtx
+
+//    Coroutine
+    implementation mobileUiDependencies.coroutines
+    implementation mobileUiDependencies.coroutinesAndroid
+    testImplementation mobileUiDependencies.coroutines
+    testImplementation mobileUiDependencies.coroutinesAndroid
+
+//    Android ArchComp
+    implementation mobileUiDependencies.archRuntimeKtx
+    implementation mobileUiDependencies.archLiveDataKtx
+    implementation mobileUiDependencies.archExtensions
+
+//    Javax
+    implementation mobileUiDependencies.javaxAnnotation
+    implementation mobileUiDependencies.javaxInject
+
+//    dagger
+    kapt mobileUiDependencies.daggerCompiler
+    kapt mobileUiDependencies.daggerProcessor
+    implementation mobileUiDependencies.dagger
+    kaptTest mobileUiDependencies.daggerCompiler
+    kaptAndroidTest mobileUiDependencies.daggerCompiler
+
+//    OkHttpUrl
+    implementation mobileUiDependencies.okHttpUrlconnection
+    implementation mobileUiDependencies.okHttp
+    implementation mobileUiDependencies.okHttpLogger
+
+//    Retrofit
+    implementation mobileUiDependencies.retrofit
+    implementation mobileUiDependencies.retrofitConverter
+
+//    Instrumentation test dependencies
+    testImplementation mobileUiDependencies.junit
+    testImplementation mobileUiDependencies.junitExt
+    testImplementation mobileUiDependencies.coreTest
+    testImplementation mobileUiDependencies.supportRunner
+    androidTestImplementation mobileUiDependencies.supportRunner
+    testImplementation mobileUiDependencies.androidRules
+    androidTestImplementation mobileUiDependencies.androidRules
+    androidTestImplementation mobileUiDependencies.espressoCore
+    androidTestImplementation mobileUiDependencies.espressoContrib
+
+    testImplementation mobileUiDependencies.mockk
+    androidTestImplementation mobileUiDependencies.mockkAndroid
+    testImplementation mobileUiDependencies.truth
+    implementation mobileUiDependencies.truth
+
+    // navigation
+    implementation mobileUiDependencies.navigationFragmentKtx
+    implementation mobileUiDependencies.navigationUiKtx
+
+    androidTestImplementation('com.squareup.okhttp3:mockwebserver:3.14.2') {
+        exclude group: "com.squareup.okhttp3"
+    }
+
+    // Robolectric environment
+    testImplementation 'org.robolectric:robolectric:4.4'
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.2'
+}

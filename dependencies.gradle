@@ -1,0 +1,255 @@
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
+
+ext {
+    //ApplicationId
+    appId = "com.aymen.instant"
+
+    //Android
+    androidMinSdkVersion = 23
+    androidTargetSdkVersion = 30
+    androidCompileSdkVersion = 32
+    buildToolsVersion = "30.0.3"
+
+    //Libraries
+    rxKotlinVersion = '2.3.0'
+    rxAndroidVersion = '2.1.1'
+    roomVersion = '2.3.0'
+    jackson = '2.12.0'
+    jacksonConverter = '2.9.0'
+
+
+    //Picasso
+    picasso = "2.71828"
+
+    //Testing
+    kotlin_version_JUnit = '1.4.21'
+    assertJVersion = '3.8.0'
+    espressoVersion = '3.0.0'
+    mockitoKotlinVersion = '2.2.0'
+    mockitoInline = '2.8.47'
+    mockitoAndroidVersion = '3.1.0'
+    runnerVersion = '0.5'
+    espressoIntents = '3.3.0'
+    espressoContrib = '3.3.0'
+
+    // Debug DataBase
+    debugDataBase = '1.0.3'
+
+    // autoDispose
+    autodisposeAndroid = '1.4.0'
+    autodisposeAndroidArchcomponents = '1.4.0'
+    autodisposeKotlin = '0.8.0'
+
+
+    //EventBus
+    eventbus = '3.1.1'
+
+    //Lottie
+    lottie = '3.6.0'
+
+
+    //gson
+    gson = '2.8.6'
+
+    //RxBinding
+    rxBinding = '4.0.0'
+
+    //CircularImage
+    circularImage = '3.1.0'
+
+    // PersistentCookieJar
+    persistentCookieJar = 'v1.0.1'
+
+    // Stomp Socket
+    stompSocket = '1.6.4'
+
+    //Firebase push notification
+    fireBaseNotification = '20.2.4'
+    fireBaseAnalytics = '17.2.2'
+    fireBaseCrashlytics = '17.1.1'
+    fireBaseCore = '17.5.0'
+
+//    fireBaseNotification = '22.0.0'
+//    fireBaseAnalytics = '19.0.0'
+    fireBaseAnalyticsbom = '26.2.0'
+//    fireBaseCrashlytics = '18.1.0'
+//    fireBaseCore = '19.0.0'
+    googleMaps = '17.0.1'
+    googleMapsUtils = '2.2.0'
+    googlePlayServcieLocation = '18.0.0'
+
+    // Shimmer facebook placeholder
+    layoutFacebookPlaceHolder = '0.5.0'
+
+
+    // android annotations
+    androidAnnotations = '1.1.0'
+
+    // android annotations
+    androidPalette = '1.0.0'
+
+    // legacy support
+    androidLegacySupport = '1.0.0'
+
+
+    // cardView
+    cardView = '1.0.0'
+    Carbon = '0.16.0.1'
+
+
+    //CameraX
+    cameraXCore = '1.0.0-beta07'
+    cameraX = '1.0.0-beta07'
+    cameraXLifecycle = '1.0.0-alpha03'
+    cameraXView = '1.0.0-alpha17'
+    cameraExtension = '1.0.0-alpha03'
+    exifCameraX = '1.1.0'
+
+    //utils
+    circleimageview = '3.0.2'
+    pinView = '1.4.3'
+    pageIndiocator = '1.0.3'
+    switchIosLike = '0.0.3'
+    timeHelper = '1.3.0'
+    seekBar = '1.0.0'
+
+    //Socket
+    socket = '0.6.0'
+
+    // image Compressor
+    imageCompressor = '2.1.0'
+
+    //Phone Number Library
+    phoneNumberLibrary = '8.12.3'
+
+    //instant App
+    instantApp = '17.0.0'
+    instantReferrer = '2.2'
+    //twilio
+    ion = '2.1.8'
+    voiceAndroid = '5.8.0'
+    audioSwitch = '1.1.2'
+    googleServices = '4.2.0'
+
+
+    //multidex
+    multidex = '2.0.1'
+
+    //ViewModel
+    archViewModelLifeCycleKtx = '2.4.0-alpha02'
+
+    // appCompat
+    appCompat = '1.3.0'
+
+    // recyclerView
+    recyclerView = '1.1.0'
+
+    // material Design
+    materialDesign = '1.4.0'
+
+    // constraintLayout
+    constraintLayout = '2.0.4'
+
+    // timber
+    timberVersion = '4.7.1'
+
+    //Glide
+    glideVersion = '4.11.0'
+
+    //Kotlin
+    kotlinVersion = '1.5.31'
+    kotlinKtx = '1.7.0'
+
+    // Coroutine
+    coroutinesVersion = '1.3.8'
+
+    // lifecycle
+    archLifecyle = '2.2.0'
+
+    // liveData Ktx
+    archLiveDataKtx = '2.2.0'
+
+    // JavaX
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+
+    // Dagger 2
+    daggerVersion = '2.38'
+
+    // okHttp
+    okHttpVersion = '4.9.0'
+    okHttpUrlconnection = '4.9.0'
+
+    // retrofit
+    retrofitVersion = '2.7.0'
+
+    // jUnit
+    jUnitVersion = '4.13.2'
+    jUnitVersionExt = '1.1.2'
+
+    // coreTest
+    coreTest = '2.1.0'
+
+    // runner
+    androidSupportRunnerVersion = '1.3.1-alpha02'
+
+    // rules
+    androidSupportRulesVersion = '1.3.1-alpha02'
+
+    // espressoCore
+    espressoCore = '3.4.0'
+    espressoContrib = '3.3.0'
+
+    // navigation
+    mockk = '1.12.5'
+    truth = '1.1.3'
+    navigation = '2.3.0'
+
+    mobileUiDependencies = [
+            multidex                 : "androidx.multidex:multidex:${multidex}",
+            archViewModelLifeCycleKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${archViewModelLifeCycleKtx}",
+            appCompat                : "androidx.appcompat:appcompat:${appCompat}",
+            materialDesign           : "com.google.android.material:material:${materialDesign}",
+            recyclerView             : "androidx.recyclerview:recyclerview:${recyclerView}",
+            constraintLayout         : "androidx.constraintlayout:constraintlayout:${constraintLayout}",
+            timber                   : "com.jakewharton.timber:timber:${timberVersion}",
+            glide                    : "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler            : "com.github.bumptech.glide:compiler:${glideVersion}",
+            kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            kotlinKtx                : "androidx.core:core-ktx:${kotlinKtx}",
+            coroutines               : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
+            coroutinesAndroid        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
+            archRuntimeKtx           : "androidx.lifecycle:lifecycle-runtime-ktx:${archLifecyle}",
+            archExtensions           : "androidx.lifecycle:lifecycle-extensions:${archLifecyle}",
+            archLiveDataKtx          : "androidx.lifecycle:lifecycle-livedata-ktx:${archLiveDataKtx}",
+            javaxAnnotation          : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject              : "javax.inject:javax.inject:${javaxInjectVersion}",
+            daggerCompiler           : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger                   : "com.google.dagger:dagger:${daggerVersion}",
+            daggerProcessor          : "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            okHttp                   : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger             : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            okHttpUrlconnection      : "com.squareup.okhttp3:okhttp-urlconnection:${okHttpUrlconnection}",
+            retrofit                 : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter        : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            junit                    : "junit:junit:${jUnitVersion}",
+            junitExt                 : "androidx.test.ext:junit:${jUnitVersionExt}",
+            coreTest                 : "androidx.arch.core:core-testing:${coreTest}",
+            supportRunner            : "androidx.test:runner:${androidSupportRunnerVersion}",
+            androidRules             : "androidx.test:rules:${androidSupportRulesVersion}",
+            espressoCore             : "androidx.test.espresso:espresso-core:${espressoCore}",
+            espressoContrib          : "androidx.test.espresso:espresso-contrib:${espressoContrib}",
+
+            mockk                    : "io.mockk:mockk:${mockk}",
+            mockkAndroid             : "io.mockk:mockk-android:${mockk}",
+            truth                    : "com.google.truth:truth:${truth}",
+            navigationFragmentKtx    : "androidx.navigation:navigation-fragment-ktx:${navigation}",
+            navigationUiKtx          : "androidx.navigation:navigation-ui-ktx:${navigation}",
+
+    ]
+}
